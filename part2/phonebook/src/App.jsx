@@ -1,24 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
+import Persons from './components/Persons'
 
-const Persons = ({persons}) => {
-  return(
-    <ul>
-      {persons.map(person => {
-        return <li key={person.id}>{person.name} {person.number}</li>
-      })}
-    </ul>
-  )
-}
+
+
 const App = () => {
-  const [initialPersons, setInitialPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456', id: 1 },
-    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ])
+  const [initialPersons, setInitialPersons] = useState([])
   const [persons, setPersons] = useState(initialPersons)
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/phonebook")
+      .then(response => {
+        setInitialPersons(response.data)
+        setPersons(response.data)
+
+      })
+  }, [])
 
   return (
     <div> 
