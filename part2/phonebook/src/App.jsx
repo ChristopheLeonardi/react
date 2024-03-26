@@ -3,10 +3,10 @@ import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import servicePhonebook from './services/phonebook'
-
+import './index.css'
 
 const App = () => {
-  const [initialPersons, setInitialPersons] = useState([])
+  const [initialPersons, setInitialPersons] = useState(null)
   const [persons, setPersons] = useState(initialPersons)
 
   useEffect(() => {

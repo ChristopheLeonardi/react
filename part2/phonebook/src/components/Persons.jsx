@@ -10,15 +10,14 @@ const handleDeleteAction = (id, persons, setPersons) => {
 const Persons = ({persons, setPersons}) => {
     return(
       <ul>
-        {console.log(persons)}
         {persons.map(person => {
           return(
-            <>
-              <li key={person.id}>{person.name} {person.number}</li>
-              <button 
-                key={`rmButton-${person.id}`}
-                onClick={() => {handleDeleteAction(person.id, persons, setPersons)}}>Delete</button>
-            </>
+              <li key={person.id}>
+                <p>{person.name} {person.number}</p>
+                <button 
+                  key={`rmButton-${person.id}`}
+                  onClick={() => {handleDeleteAction(person.id, persons, setPersons)}}>Delete</button>
+              </li>
           )
 
             

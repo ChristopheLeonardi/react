@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import Notification from './Notification'
 import servicePhonebook from '../services/phonebook'
 
 const PersonForm = ({persons, setPersons, setInitialPersons}) => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [notificationMessage, setNotificationMessage] = useState({message:"", type:""})
 
 
   const handleNameChange = (event) => {
@@ -29,7 +31,14 @@ const PersonForm = ({persons, setPersons, setInitialPersons}) => {
 
           setPersons(newPersons)
           setInitialPersons(newPersons)
+          setNotificationMessage({message:`${newName} number changer`, type:"info"})
+        
         })
+        .catch(error => {
+          setNotificationMessage({message:`${newName} has been deleted from server`, type:"error"})
+          return
+        })
+
       return 
     }
     const newNameObject = {
@@ -40,12 +49,14 @@ const PersonForm = ({persons, setPersons, setInitialPersons}) => {
       .then(data => {
         setPersons(persons.concat(data))
         setInitialPersons(persons.concat(data))
+        setNotificationMessage({message:`added ${newName}`, type:"info"})
       })
 
   }
 
   return (
     <form>
+      <Notification notificationMessage={notificationMessage} setNotificationMessage={setNotificationMessage}/>
       <div>name: <input value={newName} onChange={handleNameChange}/></div>
       <div>number: <input value={newNumber} onChange={handleNumberChange}/></div>
       <div>
