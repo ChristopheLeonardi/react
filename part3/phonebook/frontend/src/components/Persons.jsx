@@ -10,7 +10,7 @@ const handleDeleteAction = (id, persons, setPersons) => {
 const Persons = ({persons, setPersons}) => {
     return(
       <ul>
-        {persons.map(person => {
+        {persons && persons.map(person => {
           return(
               <li key={person.id}>
                 <p>{person.name} {person.number}</p>
