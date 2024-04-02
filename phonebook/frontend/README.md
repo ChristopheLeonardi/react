@@ -12,4 +12,4 @@ docker build -t react-nginx-app .
 docker run --name react-nginx-app -p 8080:80 -d react-nginx-app
 
 mongodb atlas christopheleonardi1 /*123Aurora123*/
-mongodb+srv://christopheleonardi1:/*123Aurora123*/@react.2mrdygk.mongodb.net/?retryWrites=true&w=majority&appName=react
+mongodb+srv://christopheleonardi1:123Aurora123@react.2mrdygk.mongodb.net/?retryWrites=true&w=majority&appName=react
