@@ -11,6 +11,6 @@ const App = () => {
       <Notes/>
     </div>
   )
-}
+} 
 
 export default App
